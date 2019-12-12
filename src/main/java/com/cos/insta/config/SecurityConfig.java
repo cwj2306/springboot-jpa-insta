@@ -30,14 +30,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		http.cors().disable();
 		
 		http.authorizeRequests()
-		.antMatchers("/user/**", "/follow/**", "/image/**") //잠김
+		.antMatchers("/", "/user/**", "/follow/**", "/image/**") //잠김
 		.authenticated()
 		.anyRequest().permitAll() // 이외의 모든 주소는 다 접근 가능
 		.and()
 		.formLogin()
 		.loginPage("/auth/login") //기본 제공하는 로그인 페이지 대체
 		.loginProcessingUrl("/auth/loginProc")
-		.defaultSuccessUrl("/test/home");
+		.defaultSuccessUrl("/");
 
 	}
 	

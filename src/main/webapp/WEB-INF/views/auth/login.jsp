@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
-<title>Login | Jejugram</title>
+<title>Login | Nanogram</title>
 <link
 	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
 	rel="stylesheet">
@@ -32,7 +32,7 @@
 			</div>
 			<div class="login__box">
 				<span class="login__text"> Don't have an account? <br />
-				</span> <a class="login__blue-link" href="#">Sign up</a>
+				</span> <a class="login__blue-link" href="/auth/join">Sign up</a>
 			</div>
 			<div class="login__t-box">
 				<span class="login__text"> Get the app. </span>

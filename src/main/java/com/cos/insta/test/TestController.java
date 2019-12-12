@@ -1,14 +1,23 @@
 package com.cos.insta.test;
 
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.cos.insta.model.User;
+import com.cos.insta.repository.UserRepository;
 
 @Controller
 @RequestMapping("/test")
 public class TestController {
+	
+	@Autowired
+	private UserRepository userRepo;
 
 	@GetMapping("/home")
 	public String test() {
@@ -44,4 +53,14 @@ public class TestController {
 	public String testImageUpload() {
 		return "image/image_upload";
 	}
+	
+	@GetMapping("/user/{id}")
+	public @ResponseBody User testUser(@PathVariable int id) {
+		
+		Optional<User> oUser = userRepo.findById(id);
+		User user = oUser.get();
+		
+		return user;
+	}
+	
 }
