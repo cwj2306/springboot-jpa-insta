@@ -47,4 +47,7 @@ public class User {
 	private Timestamp createDate;
 	@CreationTimestamp
 	private Timestamp updateDate;
+	
+	private String provider; // kakao or google or facebook ...
+	private String providerId;
 }

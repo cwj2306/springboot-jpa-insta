@@ -26,8 +26,12 @@
 					<input type="submit" value="Log in">
 				</form>
 				<span class="login__divider"> or </span> 
-					<a href="http://facebook.com" class="login__fb-link">
-					<i class="fa fa-facebook-square"></i> Log in with Facebook</a>
+				
+					<!-- 카카오 로그인 버튼 -->
+					<a href="/auth/kakao/login" class="login__fb-link">
+						<img src="/images/kakao_account_login_btn_medium_narrow.png" width="100%"/>
+					</a>
+					
 					<a href="#" class="login__small-link">Forgot password?</a>
 			</div>
 			<div class="login__box">
