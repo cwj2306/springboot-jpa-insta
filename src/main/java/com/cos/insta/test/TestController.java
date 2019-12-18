@@ -1,16 +1,23 @@
 package com.cos.insta.test;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.cos.insta.model.User;
+import com.cos.insta.model.Image;
+import com.cos.insta.repository.ImageRepository;
 import com.cos.insta.repository.UserRepository;
+
+
 
 @Controller
 @RequestMapping("/test")
@@ -18,6 +25,9 @@ public class TestController {
 	
 	@Autowired
 	private UserRepository userRepo;
+	@Autowired
+	private ImageRepository imageRepo;
+	
 
 	@GetMapping("/home")
 	public String test() {
@@ -54,13 +64,14 @@ public class TestController {
 		return "image/image_upload";
 	}
 	
-	@GetMapping("/user/{id}")
-	public @ResponseBody User testUser(@PathVariable int id) {
-		
-		Optional<User> oUser = userRepo.findById(id);
-		User user = oUser.get();
-		
-		return user;
+	// http://localhost:8080/test/image/feed?sort=id,desc
+	@GetMapping("/image/feed")
+	public @ResponseBody List<Image> testImageFeed(
+			@PageableDefault(size=2, sort="id", direction =  Sort.Direction.DESC) Pageable pageable){
+		int userId = 3;
+		Page<Image> images = imageRepo.findImages(userId, pageable);
+		return images.getContent();
 	}
+	
 	
 }

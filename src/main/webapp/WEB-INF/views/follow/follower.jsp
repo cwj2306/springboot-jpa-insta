@@ -21,7 +21,7 @@
 
 				<li class="explore__user">
 					<div class="explore__content">
-						<img src="/images/avatar.jpg" />
+						<img src="/upload/${follower.toUser.profileImage}" />
 						<div class="explore__info">
 							<span class="explore__username">${follower.fromUser.name}</span>
 						</div>

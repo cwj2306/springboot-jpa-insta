@@ -33,7 +33,7 @@ public class Follow {
 	
 	@ManyToOne
 	@JoinColumn(name = "toUserId")
-	@JsonIgnoreProperties({"images"})
+//	@JsonIgnoreProperties({"images"})
 	private User toUser;
 	
 	@Transient

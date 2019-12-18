@@ -9,10 +9,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.OrderBy;
 
 import org.hibernate.annotations.CreationTimestamp;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import lombok.Data;
@@ -37,7 +39,8 @@ public class User {
 	// findById() 할 때는 들고옴
 	// 유저가 작성한 이미지 필요없이 유저정보만 필요한 경우에는 네이티브 쿼리 따로 작성해서 사용 할 것
 	@OneToMany(mappedBy = "user") //DB에 들어가지 않음
-	@JsonManagedReference //순환참조 방지
+	@JsonIgnoreProperties({"user", "tage", "likes"})
+	@OrderBy("id desc")
 	private List<Image> images = new ArrayList<>();
 	
 	@CreationTimestamp // null 일 경우 자동으로 현재시간 들어감

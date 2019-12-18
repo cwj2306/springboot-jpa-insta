@@ -21,7 +21,8 @@
 
 				<li class="explore__user">
 					<div class="explore__content">
-						<img src="/images/avatar.jpg" />
+<!-- 					<img src="/images/avatar.jpg" /> -->
+						<img src="/upload/${follow.toUser.profileImage}" />
 						<div class="explore__info">
 							<span class="explore__username">${follow.toUser.name}</span>
 						</div>

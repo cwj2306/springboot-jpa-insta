@@ -44,6 +44,6 @@ spring:
       max-file-size: 1MB
     
 file:
-  path: C:/src/instaclone/insta/src/main/resources
+  path: C:/src/instaclone/insta/src/main/resources/upload/
   
  

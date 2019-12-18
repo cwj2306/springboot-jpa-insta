@@ -5,10 +5,7 @@ $(document).ready(function() {
     $closeBtn = $(".fa-times"),
     $cancelBtn = $("#cancel"),
     $logoutBtn = $("#logout");
-  $heart.click(function() {
-    $(this).toggleClass("heart-clicked fa-heart fa-heart-o");
-  });
-
+  
   $cog.click(function() {
     $overlay.fadeIn();
   });
