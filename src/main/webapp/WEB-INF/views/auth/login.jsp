@@ -10,6 +10,7 @@
 	rel="stylesheet">
 <link rel="shortcut icon" href="/images/favicon.ico">
 <link rel="stylesheet" href="/css/styles.css">
+<script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
 </head>
 <body>
 
@@ -28,7 +29,7 @@
 				<span class="login__divider"> or </span> 
 				
 					<!-- 카카오 로그인 버튼 -->
-					<a href="/auth/kakao/login" class="login__fb-link">
+					<a href="javascript:newLoginForm()" class="login__fb-link">
 						<img src="/images/kakao_account_login_btn_medium_narrow.png" width="100%"/>
 					</a>
 					
@@ -49,6 +50,37 @@
 	</main>
 
 	<%@include file="../include/footer.jsp" %>
+
+	<script type='text/javascript'>
+
+		function newLoginForm(){
+			Kakao.init('3380be8864c1fd2920e469746701bdc8');
+			
+			Kakao.Auth.loginForm({
+				success: function(authObj){
+					
+					alert(JSON.stringify(authObj));
+					
+					Kakao.API.request({
+							url: '/v2/user/me',
+							success: function(res){
+								alert(JSON.stringify(res));
+								window.location.href='/auth/kakao/login';
+							},
+							fail: function(error){
+								alert(JSON.stringify(error));
+							}
+					});
+					
+				},
+				fail : function(err){
+					alert(JSON.stringify(err));
+				}
+				
+			});
+		}
+		
+	</script>
 
 </body>
 </html>

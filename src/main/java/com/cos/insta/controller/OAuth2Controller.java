@@ -128,10 +128,10 @@ public class OAuth2Controller {
       
       HttpHeaders headers2 = new HttpHeaders();
       //위에서 받은 엑세스토큰
-      headers.add("Authorization", "Bearer "+oToken.getAccess_token());
-      headers.add("Content-type", "application/x-www-form-urlencoded; charset=utf-8");
+      headers2.add("Authorization", "Bearer "+oToken.getAccess_token());
+      headers2.add("Content-type", "application/x-www-form-urlencoded; charset=utf-8");
       
-      HttpEntity request2 = new HttpEntity(headers);
+      HttpEntity request2 = new HttpEntity(headers2);
       
       ResponseEntity response2 = rt2.exchange(
             "https://kapi.kakao.com/v2/user/me",
@@ -179,6 +179,7 @@ public class OAuth2Controller {
              return "redirect:/";
       }
       
-      
    }
+   
+   
 }
