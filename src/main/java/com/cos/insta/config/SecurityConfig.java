@@ -11,6 +11,8 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
+import com.cos.insta.handler.MyLogoutSuccessHandler;
+
 
 @Configuration
 @EnableWebSecurity //스프링 시큐리티 필터에 등록하는 어노테이션
@@ -38,6 +40,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		.loginPage("/auth/login") //기본 제공하는 로그인 페이지 대체
 		.loginProcessingUrl("/auth/loginProc")
 		.defaultSuccessUrl("/");
+//		.and()
+//		.logout()
+		//로그아웃에 성공했을 때
+		//이 것은 핸들러를 사용한 것이고
+		//로그인처럼 url을 사용해도된다.
+		//.logoutSuccessUrl("/home")
+//		.logoutSuccessHandler(new MyLogoutSuccessHandler());
+
+
 
 	}
 	
